@@ -5,17 +5,19 @@ name: Python application
 
 on:
   push:
-    branches: [ "main" ]
+ 
   pull_request:
-    branches: [ "main" ]
+
 
 permissions:
   contents: read
 
 jobs:
+  tests:
+    runs-on: ${{ matrix.os }}
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -36,4 +38,5 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        pytest
+        pip install pytest
+        python -m pytest

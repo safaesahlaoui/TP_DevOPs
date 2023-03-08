@@ -1,15 +1,16 @@
-from selenium import webdriver
 import time
+from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.options import Options
-class infow:
-    #driver = webdriver.Chrome()
 
+
+
+class Infow:
+    # driver = webdriver.Chrome()
     query = None
     def __init__(self):
-        self.driver =\
+        self.driver = \
             webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
     def get_info(self, query):
@@ -22,6 +23,3 @@ class infow:
             By.XPATH, '//*[@id="search-form"]/fieldset/button/i')
         enter.click()
         time.sleep(10)
-
-
-

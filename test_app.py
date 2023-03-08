@@ -1,5 +1,5 @@
-from seleniumconfig import infow
+from seleniumconfig import Infow
 
 def test_py():
-    info = infow()
+    info = Infow()
     info.get_info('Maroc')

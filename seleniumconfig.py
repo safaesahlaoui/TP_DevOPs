@@ -1,3 +1,6 @@
+# pylint: disable=missing-module-docstring
+# pylint: disable=missing-class-docstring
+# pylint: disable=missing-function-docstring
 import time
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -6,7 +9,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 
 
-class Infow:
+class Infow:# pylint: disable=too-few-public-methods
     # driver = webdriver.Chrome()
     query = None
     def __init__(self):

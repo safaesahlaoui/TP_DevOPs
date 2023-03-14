@@ -5,6 +5,9 @@ on: push
 jobs:
   tests:
     runs-on: ${{ matrix.os }}
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    timeout-minutes : 10
 
     strategy:
       matrix:
@@ -29,3 +32,16 @@ jobs:
       - name: Run tests
         run: |
           python -m pytest
+      - name: Send GitHub Action trigger data to Slack workflow
+        uses: act10ns/slack@v1
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
+          text: 'CICD ongoing...'
+          steps : ${{ toJson(steps) }}
+          channel : '#test_dev_osp'
+        if : always()
+      - name : Analysing the code with pylint
+        run : |
+          pylint $(git ls-files '*.py')
+      

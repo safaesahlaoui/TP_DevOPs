@@ -39,7 +39,7 @@ jobs:
           fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
           text: 'CICD ongoing...'
           steps : ${{ toJson(steps) }}
-          channel : '#test_dev_osp'
+          channel : '#un-projet-dev'
         if : always()
       - name : Analysing the code with pylint
         run : |
